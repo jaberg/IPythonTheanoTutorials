@@ -9,6 +9,7 @@ things in Theano.
 * numpy
 * scipy
 * matplotlib
+* IPython (>= 0.13)
 * theano
 * skdata (provides data sets for machine learning notebooks)
 * pyautodiff (required for some notebooks)
