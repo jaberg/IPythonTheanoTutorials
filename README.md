@@ -5,10 +5,10 @@ things in Theano.
 
 ### Theano Tutorials
 
-1. [nbpages/Theano Tutorial (Part 1 - Introduction).html](Introduction)
-2. [nbpages/Theano Tutorial (Part 2 - Simple Computation).html](Simple Computation)
-3. [nbpages/Theano Tutorial (Part 3 - Functions and Shared Variables).html](Functions and Shared Variables)
-4. [nbpages/Theano Tutorial (Part 4 - Random Variables).html](Random Variables)
+1. [Introduction](nbpages/Theano Tutorial (Part 1 - Introduction).html)
+2. [Simple computation](nbpages/Theano Tutorial (Part 2 - Simple Computation).html)
+3. [Functions and Shared Variables](nbpages/Theano Tutorial (Part 3 - Functions and Shared Variables).html)
+4. [Random Variables](nbpages/Theano Tutorial (Part 4 - Random Variables).html)
 
 
 ### Machine Learning Case Studies
