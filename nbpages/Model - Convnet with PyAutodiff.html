@@ -1,0 +1,1148 @@
+<html>
+<head>
+<style type="text/css">
+/**
+ * HTML5 ✰ Boilerplate
+ *
+ * style.css contains a reset, font normalization and some base styles.
+ *
+ * Credit is left where credit is due.
+ * Much inspiration was taken from these projects:
+ * - yui.yahooapis.com/2.8.1/build/base/base.css
+ * - camendesign.com/design/
+ * - praegnanz.de/weblog/htmlcssjs-kickstart
+ */
+
+
+/**
+ * html5doctor.com Reset Stylesheet (Eric Meyer's Reset Reloaded + HTML5 baseline)
+ * v1.6.1 2010-09-17 | Authors: Eric Meyer & Richard Clark
+ * html5doctor.com/html-5-reset-stylesheet/
+ */
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+sup { vertical-align: super; }
+sub { vertical-align: sub; }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+blockquote, q { quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after { content: ""; content: none; }
+
+ins { background-color: #ff9; color: #000; text-decoration: none; }
+
+mark { background-color: #ff9; color: #000; font-style: italic; font-weight: bold; }
+
+del { text-decoration: line-through; }
+
+abbr[title], dfn[title] { border-bottom: 1px dotted; cursor: help; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+
+input, select { vertical-align: middle; }
+
+
+/**
+ * Font normalization inspired by YUI Library's fonts.css: developer.yahoo.com/yui/
+ */
+
+body { font:13px/1.231 sans-serif; *font-size:small; } /* Hack retained to preserve specificity */
+select, input, textarea, button { font:99% sans-serif; }
+
+/* Normalize monospace sizing:
+   en.wikipedia.org/wiki/MediaWiki_talk:Common.css/Archive_11#Teletype_style_fix_for_Chrome */
+pre, code, kbd, samp { font-family: monospace, sans-serif; }
+
+em,i { font-style: italic; }
+b,strong { font-weight: bold; }
+
+</style>
+<style type="text/css">
+
+/* Flexible box model classes */
+/* Taken from Alex Russell http://infrequently.org/2009/08/css-3-progress/ */
+ 
+.hbox {
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-align: stretch;
+ 
+	display: -moz-box;
+	-moz-box-orient: horizontal;
+	-moz-box-align: stretch;
+ 
+	display: box;
+	box-orient: horizontal;
+	box-align: stretch;
+}
+ 
+.hbox > * {
+	-webkit-box-flex: 0;
+	-moz-box-flex: 0;
+	box-flex: 0;
+}
+ 
+.vbox {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-box-align: stretch;
+ 
+	display: -moz-box;
+	-moz-box-orient: vertical;
+	-moz-box-align: stretch;
+ 
+	display: box;
+	box-orient: vertical;
+	box-align: stretch;
+}
+ 
+.vbox > * {
+	-webkit-box-flex: 0;
+	-moz-box-flex: 0;
+	box-flex: 0;
+}
+  
+.reverse {
+	-webkit-box-direction: reverse;
+	-moz-box-direction: reverse;
+	box-direction: reverse;
+}
+ 
+.box-flex0 {
+	-webkit-box-flex: 0;
+	-moz-box-flex: 0;
+	box-flex: 0;
+}
+ 
+.box-flex1, .box-flex {
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	box-flex: 1;
+}
+ 
+.box-flex2 {
+	-webkit-box-flex: 2;
+	-moz-box-flex: 2;
+	box-flex: 2;
+}
+ 
+.box-group1 {
+	-webkit-box-flex-group: 1;
+	-moz-box-flex-group: 1;
+	box-flex-group: 1;
+}
+ 
+.box-group2 {
+	-webkit-box-flex-group: 2;
+	-moz-box-flex-group: 2;
+	box-flex-group: 2;
+}
+ 
+.start {
+	-webkit-box-pack: start;
+	-moz-box-pack: start;
+	box-pack: start;
+}
+ 
+.end {
+	-webkit-box-pack: end;
+	-moz-box-pack: end;
+	box-pack: end;
+}
+ 
+.center {
+	-webkit-box-pack: center;
+	-moz-box-pack: center;
+	box-pack: center;
+}
+
+</style>
+<style type="text/css">
+/**
+ * Primary styles
+ *
+ * Author: IPython Development Team
+ */
+
+
+body {
+    overflow: hidden;
+}
+
+span#save_widget {
+    padding: 5px;
+    margin: 0px 0px 0px 300px;
+    display:inline-block;
+}
+
+span#notebook_name {
+    height: 1em;
+    line-height: 1em;
+    padding: 3px;
+    border: none;
+    font-size: 146.5%;
+}
+
+.ui-menubar-item .ui-button .ui-button-text {
+    padding: 0.4em 1.0em;
+    font-size: 100%;
+}
+
+.ui-menu {
+  -moz-box-shadow:    0px 6px 10px -1px #adadad;
+  -webkit-box-shadow: 0px 6px 10px -1px #adadad;
+  box-shadow:         0px 6px 10px -1px #adadad;
+}
+
+.ui-menu .ui-menu-item a {
+    border: 1px solid transparent;
+    padding: 2px 1.6em;
+}
+
+.ui-menu .ui-menu-item a.ui-state-focus {
+    margin: 0;
+}
+
+.ui-menu hr {
+    margin: 0.3em 0;
+}
+
+#menubar_container {
+    position: relative;
+}
+
+#notification {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    height: 25px;
+    padding: 3px 6px;
+    z-index: 10;
+}
+
+#toolbar {
+    padding: 3px 15px;
+}
+
+#cell_type {
+    font-size: 85%;
+}
+
+
+div#main_app {
+    width: 100%;
+    position: relative;
+}
+
+span#quick_help_area {
+    position: static;
+    padding: 5px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+.help_string {
+    float: right;
+    width: 170px;
+    padding: 0px 5px;
+    text-align: left;
+    font-size: 85%;
+}
+
+.help_string_label {
+    float: right;
+    font-size: 85%;
+}
+
+div#notebook_panel {
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+}
+
+div#notebook {
+    overflow-y: scroll;
+    overflow-x: auto;
+    width: 100%;
+    /* This spaces the cell away from the edge of the notebook area */
+    padding: 5px 5px 15px 5px;
+    margin: 0px;
+    background-color: white;
+}
+
+div#pager_splitter {
+    height: 8px;
+}
+
+div#pager {
+    padding: 15px;
+    overflow: auto;
+    display: none;
+}
+
+div.ui-widget-content {
+    border: 1px solid #aaa;
+    outline: none;
+}
+
+.cell {
+    border: 1px solid transparent;
+}
+
+div.cell {
+    width: 100%;
+    padding: 5px 5px 5px 0px;
+    /* This acts as a spacer between cells, that is outside the border */
+    margin: 2px 0px 2px 0px;
+}
+
+div.code_cell {
+    background-color: white;
+}
+
+/* any special styling for code cells that are currently running goes here */
+div.code_cell.running {
+}
+
+div.prompt {
+    /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+    width: 11ex;
+    /* This 0.4em is tuned to match the padding on the CodeMirror editor. */
+    padding: 0.4em;
+    margin: 0px;
+    font-family: monospace;
+    text-align:right;
+}
+
+div.input {
+    page-break-inside: avoid;
+}
+
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #f7f7f7;
+}
+
+div.input_prompt {
+    color: navy;
+    border-top: 1px solid transparent;
+}
+
+div.output_wrapper {
+    /* This is a spacer between the input and output of each cell */
+    margin-top: 5px;
+    margin-left: 5px;
+    /* FF needs explicit width to stretch */
+    width: 100%;
+    /* this position must be relative to enable descendents to be absolute within it */
+    position: relative;
+}
+
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  
+  overflow: auto;
+  border-radius: 3px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, .8);
+}
+
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin-right: 5px;
+}
+
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px;
+  position: absolute;
+  border-radius: 3px;
+}
+
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+
+div.output_prompt {
+    color: darkred;
+    /* 5px right shift to account for margin in parent container */
+    margin: 0 5px 0 -5px;
+}
+
+/* This class is the outer container of all output sections. */
+div.output_area {
+    padding: 0px;
+    page-break-inside: avoid;
+}
+
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+    padding: 0.4em 0.4em 0.4em 0.4em;
+}
+
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+
+/* all text output has this class: */
+div.output_text {
+    text-align: left;
+    color: black;
+    font-family: monospace;
+}
+
+/* stdout/stderr are 'text' as well as 'stream', but pyout/pyerr are *not* streams */
+div.output_stream {
+    padding-top: 0.0em;
+    padding-bottom: 0.0em;
+}
+div.output_stdout {
+}
+div.output_stderr {
+    background: #fdd; /* very light red background for stderr */
+}
+
+div.output_latex {
+    text-align: left;
+    color: black;
+}
+
+div.output_html {
+}
+
+div.output_png {
+}
+
+div.output_jpeg {
+}
+
+div.text_cell {
+    background-color: white;
+    padding: 5px 5px 5px 5px;
+}
+
+div.text_cell_input {
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #f7f7f7;
+}
+
+div.text_cell_render {
+    font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+    outline: none;
+    resize: none;
+    width:  inherit;
+    border-style: none;
+    padding: 5px;
+    color: black;
+}
+
+/* The following gets added to the <head> if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font. 
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+
+.CodeMirror {
+    line-height: 1.231;  /* Changed from 1em to our global default */
+}
+
+.CodeMirror-scroll {
+    height: auto;     /* Changed to auto to autogrow */
+    /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+    /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+    overflow-y: hidden;
+    overflow-x: auto; /* Changed from auto to remove scrollbar */
+}
+
+/* CSS font colors for translated ANSI colors. */
+
+
+.ansiblack {color: black;}
+.ansired {color: darkred;}
+.ansigreen {color: darkgreen;}
+.ansiyellow {color: brown;}
+.ansiblue {color: darkblue;}
+.ansipurple {color: darkviolet;}
+.ansicyan {color: steelblue;}
+.ansigrey {color: grey;}
+.ansibold {font-weight: bold;}
+
+.completions {
+    position: absolute;
+    z-index: 10;
+    overflow: hidden;
+    border: 1px solid grey;
+}
+
+.completions select {
+    background: white;
+    outline: none;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    overflow: auto;
+    font-family: monospace;
+}
+
+option.context {
+  background-color: #DEF7FF;
+}
+option.introspection {
+  background-color: #EBF4EB;
+}
+
+/*fixed part of the completion*/
+.completions p b {
+    font-weight:bold;
+}
+
+.completions p {
+    background: #DDF;
+    /*outline: none;
+    padding: 0px;*/
+    border-bottom: black solid 1px;
+    padding: 1px;
+    font-family: monospace;
+}
+
+pre.dialog {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 0.4em;
+    padding-left: 2em;
+}
+
+p.dialog {
+    padding : 0.2em;
+}
+
+.shortcut_key {
+    display: inline-block;
+    width: 15ex;
+    text-align: right;
+    font-family: monospace;
+}
+
+.shortcut_descr {
+}
+
+/* Word-wrap output correctly.  This is the CSS3 spelling, though Firefox seems
+   to not honor it correctly.  Webkit browsers (Chrome, rekonq, Safari) do.
+ */
+pre, code, kbd, samp { white-space: pre-wrap; }
+
+#fonttest {
+    font-family: monospace;
+}
+
+</style>
+<style type="text/css">
+.rendered_html {color: black;}
+.rendered_html em {font-style: italic;}
+.rendered_html strong {font-weight: bold;}
+.rendered_html u {text-decoration: underline;}
+.rendered_html :link { text-decoration: underline }
+.rendered_html :visited { text-decoration: underline }
+.rendered_html h1 {font-size: 197%; margin: .65em 0; font-weight: bold;}
+.rendered_html h2 {font-size: 153.9%; margin: .75em 0; font-weight: bold;}
+.rendered_html h3 {font-size: 123.1%; margin: .85em 0; font-weight: bold;}
+.rendered_html h4 {font-size: 100% margin: 0.95em 0; font-weight: bold;}
+.rendered_html h5 {font-size: 85%; margin: 1.5em 0; font-weight: bold;}
+.rendered_html h6 {font-size: 77%; margin: 1.65em 0; font-weight: bold;}
+.rendered_html ul {list-style:disc; margin: 1em 2em;}
+.rendered_html ul ul {list-style:square; margin: 0em 2em;}
+.rendered_html ul ul ul {list-style:circle; margin-left: 0em 2em;}
+.rendered_html ol {list-style:upper-roman; margin: 1em 2em;}
+.rendered_html ol ol {list-style:upper-alpha; margin: 0em 2em;}
+.rendered_html ol ol ol {list-style:decimal; margin: 0em 2em;}
+.rendered_html ol ol ol ol {list-style:lower-alpha; margin 0em 2em;}
+.rendered_html ol ol ol ol ol {list-style:lower-roman; 0em 2em;}
+
+.rendered_html hr {
+    color: black;
+    background-color: black;
+}
+
+.rendered_html pre {
+    margin: 1em 2em;
+}
+
+.rendered_html blockquote {
+    margin: 1em 2em;
+}
+
+.rendered_html table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: 1em 2em;
+}
+
+.rendered_html td {
+    border: 1px solid black;
+    text-align: left;
+    vertical-align: middle;
+    padding: 4px;
+}
+
+.rendered_html th {
+    border: 1px solid black;
+    text-align: left;
+    vertical-align: middle;
+    padding: 4px;
+    font-weight: bold;
+}
+
+.rendered_html tr {
+    border: 1px solid black;
+}    
+
+.rendered_html p + p {
+    margin-top: 1em;
+}
+
+
+</style>
+<style type="text/css">
+/* Overrides of notebook CSS for static HTML export
+
+*/
+body {
+  overflow: visible;
+  padding: 8px;
+}
+.input_area {
+  padding: 0.4em;
+}
+
+</style>
+<meta charset="UTF-8">
+<style type="text/css">
+.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+</style>
+<script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+
+</script>
+<script type="text/javascript">
+init_mathjax = function() {
+    if (window.MathJax) {
+        // MathJax loaded
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+            },
+            displayAlign: 'left', // Change this to 'center' to center equations.
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}}
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }
+}
+init_mathjax();
+</script>
+</head>
+<body>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Convolutional Networks</h1>
+<p>This notebook has been adapted from the
+<a href="http://deeplearning.net/tutorial/lenet.html">Deep Learning Tutorials: Convolutional Neural Network</a></p>
+<p>Convolutional Neural Networks (ConvNets) are MLP variants which are
+specialized for image processing.
+From Hubel and Wiesel's early work on the cat's visual cortex [Hubel68]<em>,
+we know there exists a complex arrangement of cells within the visual cortex.
+These cells are sensitive to small sub-regions of the input space, called a
+_receptive field</em>, and are tiled in such a way as to cover the entire visual
+field. These filters are local in input space and are thus better suited to
+exploit the strong spatially local correlation present in natural images.</p>
+<p>Additionally, two basic cell types have been identified: simple cells (S) and
+complex cells (C). Simple cells (S) respond maximally to specific edge-like
+stimulus patterns within their receptive field. Complex cells (C) have larger
+receptive fields and are locally invariant to the exact position of the
+stimulus.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>                                                                    
+                                                                               
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">arange</span><span class="p">,</span> <span class="n">dot</span><span class="p">,</span> <span class="n">maximum</span><span class="p">,</span> <span class="n">ones</span><span class="p">,</span> <span class="n">tanh</span><span class="p">,</span> <span class="n">zeros</span>
+<span class="kn">from</span> <span class="nn">numpy.random</span> <span class="kn">import</span> <span class="n">uniform</span>                                               
+
+<span class="kn">from</span> <span class="nn">skdata</span> <span class="kn">import</span> <span class="n">mnist</span>                                                       
+<span class="kn">import</span> <span class="nn">autodiff</span>
+
+<span class="kn">from</span> <span class="nn">util</span> <span class="kn">import</span> <span class="n">show_filters</span>
+<span class="kn">from</span> <span class="nn">util</span> <span class="kn">import</span> <span class="n">hinge</span>                                                         
+<span class="kn">from</span> <span class="nn">util</span> <span class="kn">import</span> <span class="n">ova_svm_prediction</span><span class="p">,</span> <span class="n">ova_svm_cost</span>                              
+<span class="kn">from</span> <span class="nn">util</span> <span class="kn">import</span> <span class="n">tanh_layer</span>
+<span class="kn">from</span> <span class="nn">util</span> <span class="kn">import</span> <span class="n">mlp_prediction</span><span class="p">,</span> <span class="n">mlp_cost</span>
+
+<span class="c"># -- filterbank normalized cross-correlation                                   </span>
+<span class="kn">from</span> <span class="nn">util</span> <span class="kn">import</span> <span class="n">fbncc</span> 
+
+<span class="c"># -- max-pooling over 2x2 windows                                              </span>
+<span class="kn">from</span> <span class="nn">util</span> <span class="kn">import</span> <span class="n">max_pool_2d_2x2</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># -- load and prepare the data set</span>
+<span class="c">#</span>
+<span class="c"># -- N.B. we&#39;re loading up x as images this time, not vectors</span>
+<span class="n">dtype</span> <span class="o">=</span> <span class="s">&#39;float32&#39;</span>  <span class="c"># helps save memory and go faster</span>
+<span class="n">n_examples</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">data_view</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">views</span><span class="o">.</span><span class="n">OfficialImageClassification</span><span class="p">(</span><span class="n">x_dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+<span class="n">n_classes</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">x_rows</span><span class="p">,</span> <span class="n">x_cols</span> <span class="o">=</span> <span class="n">data_view</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>
+<span class="c"># -- N.B. we shuffle the input to have shape</span>
+<span class="c">#    (#examples, #channels, #rows, #cols)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">data_view</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">x</span><span class="p">[:</span><span class="n">n_examples</span><span class="p">]</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">data_view</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">y</span><span class="p">[:</span><span class="n">n_examples</span><span class="p">]</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">*</span> <span class="n">ones</span><span class="p">((</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">),</span> <span class="n">n_classes</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+<span class="n">y1</span><span class="p">[</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="p">)),</span> <span class="n">y</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Sparse Connectivity</h2>
+<p>ConvNets (as well as several related computer vision architectures XXX),
+exploit spatially local correlation by enforcing a local connectivity pattern between
+neurons of adjacent layers. The input hidden units in the m-th layer are
+connected to a local subset of units in the (m-1)-th layer, which have spatiallycontiguous receptive fields. We can illustrate this graphically as follows:</p>
+<p><img src="files/images/sparse_1D_nn.png", align=center/></p>
+<p>Imagine that layer <strong>m-1</strong> is the input retina.
+In the above, units in layer <strong>m</strong>
+have receptive fields of width 3 with respect to the input retina and are thus only
+connected to 3 adjacent neurons in the layer below (the retina).
+Units in layer <strong>m</strong> have
+a similar connectivity with the layer below. We say that their receptive
+field with respect to the layer below is also 3, but their receptive field
+with respect to the input is larger (it is 5).
+The architecture thus
+confines the learnt "filters" (corresponding to the input producing the strongest response) to be a spatially local pattern
+(since each unit is unresponsive to variations outside of its receptive field with respect to the retina).
+As shown above, stacking many such
+layers leads to "filters" (not anymore linear) which become increasingly "global" however (i.e
+spanning a larger region of pixel space). For example, the unit in hidden
+layer <strong>m+1</strong> can encode a non-linear feature of width 5 (in terms of pixel
+space).</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Shared Weights</h2>
+<p>In ConvNets, each sparse filter $h_i$ is additionally replicated across the
+entire visual field. These "replicated" units form a <strong>feature map</strong>, which
+share the same parametrization, i.e. the same weight vector and the same bias.</p>
+<p><img src="files/images/conv_1D_nn.png" align=center/></p>
+<p>In the above figure, we show 3 hidden units belonging to the same feature map.
+Weights of the same color are shared, i.e. are constrained to be identical.
+Gradient descent can still be used to learn such shared parameters, and
+requires only a small change to the original algorithm. The gradient of a
+shared weight is simply the sum of the gradients of the parameters being
+shared.</p>
+<p>Why are shared weights interesting ? Replicating units in this way allows for
+features to be detected regardless of their position in the visual field.
+Additionally, weight sharing offers a very efficient way to do this, since it
+greatly reduces the number of free parameters to learn. By controlling model
+capacity, ConvNets tend to achieve better generalization on vision problems.</p>
+<h3>Details and Notation</h3>
+<p>Conceptually, a feature map is obtained by convolving the input image with a
+linear filter, adding a bias term and then applying a non-linear function. If
+we denote the k-th feature map at a given layer as $h^k$, whose filters
+are determined by the weights $W^k$ and bias $b_k$, then the
+feature map $h^k$ is obtained as follows (for $tanh$ non-linearities):</p>
+<p>$$
+    h^k_{ij} = \tanh ( (W^k * x)_{ij} + b_k ).
+$$</p>
+<p>To form a richer representation of the data, hidden layers are composed of
+a set of multiple feature maps, ${h^{(k)}, k=0..K}$.
+The weights $W$ of this layer can be parametrized as a 4D tensor
+(destination feature map index, source feature map index, source vertical position index, source horizontal position index)
+and
+the biases $b$ as a vector (one element per destination feature map index).
+We illustrate this graphically as follows:</p>
+<p><img src="files/images/cnn_explained.png" align=center /></p>
+<p><strong>Figure 1</strong>: example of a convolutional layer</p>
+<p>Here, we show two layers of a ConvNet, containing 4 feature maps at layer (m-1)
+and 2 feature maps ($h^0$ and $h^1$) at layer m. Pixels (neuron outputs) in
+$h^0$ and $h^1$ (outlined as blue and red squares) are computed
+from pixels of layer (m-1) which fall within their 2x2 receptive field in the
+layer below (shown
+as colored rectangles). Notice how the receptive field spans all four input
+feature maps. The weights $W^0$ and $W^1$ of $h^0$ and
+$h^1$ are thus 3D weight tensors. The leading dimension indexes the
+input feature maps, while the other two refer to the pixel coordinates.</p>
+<p>Putting it all together, $W^{kl}_{ij}$ denotes the weight connecting
+each pixel of the k-th feature map at layer m, with the pixel at coordinates
+(i,j) of the l-th feature map of layer (m-1).</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3>Filterbank Normalized Cross-Correlation</h3>
+<p>Filterbank normalized cross-correlation (<code>fbncc</code>) implements filterbank cross-correlation (convolution with flipped filters) with the additional step of local centering and normalization (sphere-ing) of the image patch. This routine provides a very high-pass non-linear filter which is used in place of pure convolution in most modern convnets (citations needed).</p>
+<p>To get a sense of what fbncc does, let's have a little fun with this classic meme...</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s">&#39;images/3wolfmoon.jpg&#39;</span><span class="p">)</span>
+<span class="n">img</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s">&#39;float32&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="mf">255.</span>
+
+<span class="n">imshow</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+
+<span class="c"># put image in 4D tensor of shape (1, 3, height, width)</span>
+<span class="n">img_</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">swapaxes</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">swapaxes</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">639</span><span class="p">,</span> <span class="mi">516</span><span class="p">)</span>
+
+<span class="n">rfilters</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s">&#39;float32&#39;</span><span class="p">)</span>
+<span class="n">out</span> <span class="o">=</span> <span class="n">fbncc</span><span class="p">(</span><span class="n">img_</span><span class="p">,</span> <span class="n">rfilters</span><span class="p">)</span>
+<span class="n">figure</span><span class="p">()</span>
+<span class="n">show_filters</span><span class="p">(</span><span class="n">out</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)),</span> <span class="n">out</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">:],</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Notice that a randomly initialized filter acts very much like an edge detector!</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Max-Pooling</h2>
+<p>ConvNets emulate the behaviour of "complex cells" in visual cortex by
+<em>max-pooling</em>, which is a form of
+nonlinear downsampling. Max-pooling partitions the input image into
+a set of non-overlapping rectangles and, for each such sub-region, outputs the
+maximum value.
+Max-pooling is useful in vision for two reasons: (1) it reduces the
+computational complexity for upper layers and (2) it provides a form of
+translation invariance. To understand the invariance argument, imagine
+cascading a max-pooling layer with a convolutional layer. There are 8
+directions in which one can translate the input image by a single pixel. If
+max-pooling is done over a 2x2 region, 3 out of these 8 possible
+configurations will produce exactly the same output at the convolutional
+layer. For max-pooling over a 3x3 window, this jumps to 5/8.</p>
+<p>Since it provides additional robustness to position, max-pooling is thus a
+"smart" way of reducing the dimensionality of intermediate representations.</p>
+<p>Max-pooling over the standard 2x2 window is implemented by <code>util.max_pool_2d_2x2</code>.
+It actually uses Theano's implementation of max-pooling internally, there is no native <code>numpy</code> implementation of max-pooling.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># -- similar to tanh_layer, but we used fbncc instead of dot</span>
+<span class="k">def</span> <span class="nf">tanh_conv_layer</span><span class="p">(</span><span class="n">W_fb</span><span class="p">,</span> <span class="n">b_fb</span><span class="p">,</span> <span class="n">img4</span><span class="p">):</span>
+    <span class="n">activation</span> <span class="o">=</span> <span class="n">fbncc</span><span class="p">(</span><span class="n">img4</span><span class="p">,</span> <span class="n">W_fb</span><span class="p">)</span> <span class="o">+</span> <span class="n">b_fb</span>
+    <span class="n">activation</span> <span class="o">=</span> <span class="n">max_pool_2d_2x2</span><span class="p">(</span><span class="n">activation</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">activation</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Stacking Layers into a ConvNet</h2>
+<p>A ConvNet architecture interleaves convolutional and pooling layers to produce
+the input to an MLP.</p>
+<p><img src="files/images/mylenet.png" align=center /></p>
+<p>From an implementation point of view, this means lower-layers operate on 4D
+tensors. These are then flattened to a 2D matrix of rasterized feature maps,
+to be compatible with our previous MLP implementation.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># -- allocate just one convolutional layer to keep the code simpler</span>
+<span class="n">n_filters</span> <span class="o">=</span> <span class="mi">16</span>
+<span class="n">patch_height</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">patch_width</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">patch_size</span> <span class="o">=</span> <span class="n">patch_height</span> <span class="o">*</span> <span class="n">patch_width</span>
+
+<span class="n">W_fb</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">(</span>
+        <span class="n">low</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">6.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">patch_size</span> <span class="o">+</span> <span class="n">n_filters</span><span class="p">)),</span>
+        <span class="n">high</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">6.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">patch_size</span> <span class="o">+</span> <span class="n">n_filters</span><span class="p">)),</span>
+        <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n_filters</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">patch_height</span><span class="p">,</span> <span class="n">patch_width</span><span class="p">),</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="n">b_fb</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">((</span>
+            <span class="n">n_filters</span><span class="p">,</span>
+            <span class="n">x_rows</span> <span class="o">-</span> <span class="n">patch_height</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+            <span class="n">x_cols</span> <span class="o">-</span> <span class="n">patch_width</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+        <span class="n">dtype</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+<span class="c"># -- allocate tanh layer parameters</span>
+<span class="n">n_hidden</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">V</span> <span class="o">=</span> <span class="n">uniform</span><span class="p">(</span><span class="n">low</span><span class="o">=-</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">6.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">b_fb</span><span class="o">.</span><span class="n">size</span> <span class="o">//</span> <span class="mi">4</span> <span class="o">+</span> <span class="n">n_hidden</span><span class="p">)),</span>
+                <span class="n">high</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">6.0</span> <span class="o">/</span> <span class="p">(</span><span class="n">b_fb</span><span class="o">.</span><span class="n">size</span> <span class="o">//</span> <span class="mi">4</span> <span class="o">+</span> <span class="n">n_hidden</span><span class="p">)),</span>
+                <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">b_fb</span><span class="o">.</span><span class="n">size</span> <span class="o">//</span> <span class="mi">4</span><span class="p">,</span> <span class="n">n_hidden</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">n_hidden</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+<span class="c"># -- allocate the SVM at the top</span>
+<span class="n">W</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">((</span><span class="n">n_hidden</span><span class="p">,</span> <span class="n">n_classes</span><span class="p">),</span> <span class="n">dtype</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">n_classes</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+<span class="c"># -- define the ConvNet model</span>
+<span class="k">def</span> <span class="nf">convnet_features</span><span class="p">(</span><span class="n">W_fb</span><span class="p">,</span> <span class="n">b_fb</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">layer1</span> <span class="o">=</span> <span class="n">tanh_conv_layer</span><span class="p">(</span><span class="n">W_fb</span><span class="p">,</span> <span class="n">b_fb</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">layer1_size</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">layer1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span>
+    <span class="n">layer2</span> <span class="o">=</span> <span class="n">tanh_layer</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">layer1</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">layer1_size</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">layer2</span>
+    
+<span class="k">def</span> <span class="nf">convnet_prediction</span><span class="p">(</span><span class="n">W_fb</span><span class="p">,</span> <span class="n">b_fb</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">layer2</span> <span class="o">=</span> <span class="n">convnet_features</span><span class="p">(</span><span class="n">W_fb</span><span class="p">,</span> <span class="n">b_fb</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ova_svm_prediction</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">layer2</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">convnet_cost</span><span class="p">(</span><span class="n">W_fb</span><span class="p">,</span> <span class="n">b_fb</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">):</span>
+    <span class="n">layer2</span> <span class="o">=</span> <span class="n">convnet_features</span><span class="p">(</span><span class="n">W_fb</span><span class="p">,</span> <span class="n">b_fb</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ova_svm_cost</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">layer2</span><span class="p">,</span> <span class="n">y1</span><span class="p">)</span>
+    
+<span class="k">print</span> <span class="s">&#39;Initial ConvNet cost:&#39;</span><span class="p">,</span> <span class="n">convnet_cost</span><span class="p">(</span><span class="n">W_fb</span><span class="p">,</span> <span class="n">b_fb</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">[:</span><span class="mi">3</span><span class="p">],</span> <span class="n">y1</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Also of note, remark that we use the same weight initialization formula as
+with the MLP. Weights are sampled randomly from a uniform distribution in the
+range [-1/$D_0$, 1/$D_0$], where $D_0$ is the number of inputs to a hidden
+unit. For MLPs, this was the number of units in the layer below. For ConvNets
+however, we have to take into account the number of input feature maps and the
+size of the receptive fields.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Training a ConvNet</h2>
+<p>Training of a ConvNet by supervised learning is done with exactly the same techniques as we used for the linear SVM and the MLP. We will look at semi-unsupervised training strategies in upcoming tutorials.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># SGD minimization</span>
+
+<span class="c"># -- do n_online_loops passes through the data set doing SGD</span>
+<span class="c">#    This can be faster at the beginning than L-BFGS</span>
+<span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">online_batch_size</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">n_batches</span> <span class="o">=</span> <span class="n">n_examples</span> <span class="o">/</span> <span class="n">online_batch_size</span>
+<span class="n">W_fb</span><span class="p">,</span> <span class="n">b_fb</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">autodiff</span><span class="o">.</span><span class="n">fmin_sgd</span><span class="p">(</span><span class="n">convnet_cost</span><span class="p">,</span> <span class="p">(</span><span class="n">W_fb</span><span class="p">,</span> <span class="n">b_fb</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">),</span>
+            <span class="n">streams</span><span class="o">=</span><span class="p">{</span>
+                <span class="s">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n_batches</span><span class="p">,</span> <span class="n">online_batch_size</span><span class="p">,)</span> <span class="o">+</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:]),</span>
+                <span class="s">&#39;y1&#39;</span><span class="p">:</span> <span class="n">y1</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n_batches</span><span class="p">,</span> <span class="n">online_batch_size</span><span class="p">,</span> <span class="n">y1</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]))},</span>
+            <span class="n">loops</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+            <span class="n">stepsize</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+            <span class="n">print_interval</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+            <span class="p">)</span>
+<span class="k">print</span> <span class="s">&#39;SGD took </span><span class="si">%.2f</span><span class="s"> seconds&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+<span class="n">show_filters</span><span class="p">(</span><span class="n">W_fb</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">n_filters</span><span class="p">,</span> <span class="mi">5</span> <span class="o">*</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Testing the ConvNet</h2>
+<p>Testing of a trained model is also done in much the same way we tested the SVM and MLP models.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">train_predictions</span> <span class="o">=</span> <span class="n">convnet_prediction</span><span class="p">(</span><span class="n">W_fb</span><span class="p">,</span> <span class="n">b_fb</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">train_errors</span> <span class="o">=</span> <span class="n">y</span> <span class="o">!=</span> <span class="n">train_predictions</span>
+<span class="k">print</span> <span class="s">&#39;Current train set error rate&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">train_errors</span><span class="p">)</span>
+
+<span class="n">test_predictions</span> <span class="o">=</span> <span class="n">convnet_prediction</span><span class="p">(</span><span class="n">W_fb</span><span class="p">,</span> <span class="n">b_fb</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">data_view</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">x</span><span class="p">[:]</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">test_errors</span> <span class="o">=</span> <span class="n">data_view</span><span class="o">.</span><span class="n">test</span><span class="o">.</span><span class="n">y</span><span class="p">[:]</span> <span class="o">!=</span> <span class="n">test_predictions</span>
+<span class="k">print</span> <span class="s">&#39;Current test set error rate&#39;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">test_errors</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Exercises</h2>
+<h3>Exercise: Hyperparameter optimization</h3>
+<p>The current hyperparameters of the convnet are not great, and the test set error is around 4%. This model should be able to score around 1% on the test set.  Try adjusting hyperparameters such as:</p>
+<ul>
+<li>the SGD learning rate</li>
+<li>the SGD mini-batch size</li>
+<li>number of SGD iterations</li>
+<li>the use of L-BFGS (adapt it from the mlp notebook)</li>
+<li>the number of hidden units in the tanh layer</li>
+<li>the patch size of the input layer</li>
+<li>the number of filters in the convolutional layer</li>
+<li>the amount of training data used</li>
+<li>regularization of parameters</li>
+</ul>
+<p>How all these things affect training and test error?</p>
+<p>Feel free to send a pull-request back to the ipam-tutorials github page if you find good hyperparameter values!</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3>Exercise: Adding an internal hidden layer</h3>
+<p>ConvNets in the literature have often been designed with not one, but two convolutional layers.  Modify the convnet_features function to use two convolutional layers. Caveat: this will involve a few annoying reshapes, resizes, etc.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3>Exercise: Different Data Sets</h3>
+<p>In 1_1_getting started, we looked at three data sets in <code>skdata</code>: MNIST, CIFAR-10, and SVHN.  The sample code above uses MNIST - try one of the other data sets and adapt the code here to run. You'll need to change the allocation of the first-layer filters to deal with the color images, and the size of the <code>b_fb</code> biases to match the larger input image dimensions, but I think that's it ...</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Tips and Tricks</h2>
+<h3>Tips and Tricks: Choosing Hyperparameters</h3>
+<p>ConvNets are especially tricky to train, as they add even more hyper-parameters than
+a standard MLP. While the usual rules of thumb for learning rates andregularization constants still apply, the following should be kept in mind when
+optimizing ConvNets.</p>
+<h3>Tips and Tricks: Number of filters</h3>
+<p>When choosing the number of filters per layer, keep in mind that computing the
+activations of a single convolutional filter is much more expensive than with
+traditional MLPs!</p>
+<p>Assume layer $(l-1)$ contains $K^{l-1}$ feature
+maps and $M \times N$ pixel positions (i.e.,
+number of positions times number of feature maps),
+and there are $K^l$ filters at layer $l$ of shape $m \times n$.
+Then computing a feature map (applying an $m \times n$ filter
+at all $(M-m) \times (N-n)$ pixel positions where the
+filter can be applied) costs $(M-m) \times (N-n) \times m \times n \times K^{l-1}$.
+The total cost is $K^l$ times that. Things may be more complicated if
+not all features at one level are connected to all features at the previous one.</p>
+<p>For a standard MLP, the cost would only be $K^l \times K^{l-1}$
+where there are $K^l$ different neurons at level $l$.
+As such, the number of filters used in ConvNets is typically much
+smaller than the number of hidden units in MLPs and depends on the size of the
+feature maps (itself a function of input image size and filter shapes).</p>
+<p>Since feature map size decreases with depth, layers near the input layer will tend to
+have fewer filters while layers higher up can have much more. In fact, to
+equalize computation at each layer, the product of the number of features
+and the number of pixel positions is typically picked to be roughly constant
+across layers. To preserve the information about the input would require
+keeping the total number of activations (number of feature maps times
+number of pixel positions) to be non-decreasing from one layer to the next
+(of course we could hope to get away with less when we are doing supervised
+learning). The number of feature maps directly controls capacity and so
+that depends on the number of available examples and the complexity of 
+the task.</p>
+<h3>Tips and Tricks: Filter Shape</h3>
+<p>Common filter shapes found in the litterature vary greatly, usually based on
+the dataset. Best results on MNIST-sized images (28x28) are usually in the 5x5range on the first layer, while natural image datasets (often with hundreds of pixels in each
+dimension) tend to use larger first-layer filters of shape 12x12 or 15x15.</p>
+<p>The trick is thus to find the right level of "granularity" (i.e. filter
+shapes) in order to create abstractions at the proper scale, given a
+particular dataset.</p>
+<h3>Tips and Tricks: Max Pooling Shape</h3>
+<p>Typical values are 2x2 or no max-pooling. Very large input images may warrant
+4x4 pooling in the lower-layers. Keep in mind however, that this will reduce the
+dimension of the signal by a factor of 16, and may result in throwing away too
+much information.</p>
+</div>
+</body>
+</html>

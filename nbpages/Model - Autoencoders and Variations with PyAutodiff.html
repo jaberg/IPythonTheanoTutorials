@@ -1,0 +1,1280 @@
+<html>
+<head>
+<style type="text/css">
+/**
+ * HTML5 ✰ Boilerplate
+ *
+ * style.css contains a reset, font normalization and some base styles.
+ *
+ * Credit is left where credit is due.
+ * Much inspiration was taken from these projects:
+ * - yui.yahooapis.com/2.8.1/build/base/base.css
+ * - camendesign.com/design/
+ * - praegnanz.de/weblog/htmlcssjs-kickstart
+ */
+
+
+/**
+ * html5doctor.com Reset Stylesheet (Eric Meyer's Reset Reloaded + HTML5 baseline)
+ * v1.6.1 2010-09-17 | Authors: Eric Meyer & Richard Clark
+ * html5doctor.com/html-5-reset-stylesheet/
+ */
+
+html, body, div, span, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp,
+small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+sup { vertical-align: super; }
+sub { vertical-align: sub; }
+
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+blockquote, q { quotes: none; }
+
+blockquote:before, blockquote:after,
+q:before, q:after { content: ""; content: none; }
+
+ins { background-color: #ff9; color: #000; text-decoration: none; }
+
+mark { background-color: #ff9; color: #000; font-style: italic; font-weight: bold; }
+
+del { text-decoration: line-through; }
+
+abbr[title], dfn[title] { border-bottom: 1px dotted; cursor: help; }
+
+table { border-collapse: collapse; border-spacing: 0; }
+
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #ccc; margin: 1em 0; padding: 0; }
+
+input, select { vertical-align: middle; }
+
+
+/**
+ * Font normalization inspired by YUI Library's fonts.css: developer.yahoo.com/yui/
+ */
+
+body { font:13px/1.231 sans-serif; *font-size:small; } /* Hack retained to preserve specificity */
+select, input, textarea, button { font:99% sans-serif; }
+
+/* Normalize monospace sizing:
+   en.wikipedia.org/wiki/MediaWiki_talk:Common.css/Archive_11#Teletype_style_fix_for_Chrome */
+pre, code, kbd, samp { font-family: monospace, sans-serif; }
+
+em,i { font-style: italic; }
+b,strong { font-weight: bold; }
+
+</style>
+<style type="text/css">
+
+/* Flexible box model classes */
+/* Taken from Alex Russell http://infrequently.org/2009/08/css-3-progress/ */
+ 
+.hbox {
+	display: -webkit-box;
+	-webkit-box-orient: horizontal;
+	-webkit-box-align: stretch;
+ 
+	display: -moz-box;
+	-moz-box-orient: horizontal;
+	-moz-box-align: stretch;
+ 
+	display: box;
+	box-orient: horizontal;
+	box-align: stretch;
+}
+ 
+.hbox > * {
+	-webkit-box-flex: 0;
+	-moz-box-flex: 0;
+	box-flex: 0;
+}
+ 
+.vbox {
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-box-align: stretch;
+ 
+	display: -moz-box;
+	-moz-box-orient: vertical;
+	-moz-box-align: stretch;
+ 
+	display: box;
+	box-orient: vertical;
+	box-align: stretch;
+}
+ 
+.vbox > * {
+	-webkit-box-flex: 0;
+	-moz-box-flex: 0;
+	box-flex: 0;
+}
+  
+.reverse {
+	-webkit-box-direction: reverse;
+	-moz-box-direction: reverse;
+	box-direction: reverse;
+}
+ 
+.box-flex0 {
+	-webkit-box-flex: 0;
+	-moz-box-flex: 0;
+	box-flex: 0;
+}
+ 
+.box-flex1, .box-flex {
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+	box-flex: 1;
+}
+ 
+.box-flex2 {
+	-webkit-box-flex: 2;
+	-moz-box-flex: 2;
+	box-flex: 2;
+}
+ 
+.box-group1 {
+	-webkit-box-flex-group: 1;
+	-moz-box-flex-group: 1;
+	box-flex-group: 1;
+}
+ 
+.box-group2 {
+	-webkit-box-flex-group: 2;
+	-moz-box-flex-group: 2;
+	box-flex-group: 2;
+}
+ 
+.start {
+	-webkit-box-pack: start;
+	-moz-box-pack: start;
+	box-pack: start;
+}
+ 
+.end {
+	-webkit-box-pack: end;
+	-moz-box-pack: end;
+	box-pack: end;
+}
+ 
+.center {
+	-webkit-box-pack: center;
+	-moz-box-pack: center;
+	box-pack: center;
+}
+
+</style>
+<style type="text/css">
+/**
+ * Primary styles
+ *
+ * Author: IPython Development Team
+ */
+
+
+body {
+    overflow: hidden;
+}
+
+span#save_widget {
+    padding: 5px;
+    margin: 0px 0px 0px 300px;
+    display:inline-block;
+}
+
+span#notebook_name {
+    height: 1em;
+    line-height: 1em;
+    padding: 3px;
+    border: none;
+    font-size: 146.5%;
+}
+
+.ui-menubar-item .ui-button .ui-button-text {
+    padding: 0.4em 1.0em;
+    font-size: 100%;
+}
+
+.ui-menu {
+  -moz-box-shadow:    0px 6px 10px -1px #adadad;
+  -webkit-box-shadow: 0px 6px 10px -1px #adadad;
+  box-shadow:         0px 6px 10px -1px #adadad;
+}
+
+.ui-menu .ui-menu-item a {
+    border: 1px solid transparent;
+    padding: 2px 1.6em;
+}
+
+.ui-menu .ui-menu-item a.ui-state-focus {
+    margin: 0;
+}
+
+.ui-menu hr {
+    margin: 0.3em 0;
+}
+
+#menubar_container {
+    position: relative;
+}
+
+#notification {
+    position: absolute;
+    right: 3px;
+    top: 3px;
+    height: 25px;
+    padding: 3px 6px;
+    z-index: 10;
+}
+
+#toolbar {
+    padding: 3px 15px;
+}
+
+#cell_type {
+    font-size: 85%;
+}
+
+
+div#main_app {
+    width: 100%;
+    position: relative;
+}
+
+span#quick_help_area {
+    position: static;
+    padding: 5px 0px;
+    margin: 0px 0px 0px 0px;
+}
+
+.help_string {
+    float: right;
+    width: 170px;
+    padding: 0px 5px;
+    text-align: left;
+    font-size: 85%;
+}
+
+.help_string_label {
+    float: right;
+    font-size: 85%;
+}
+
+div#notebook_panel {
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+}
+
+div#notebook {
+    overflow-y: scroll;
+    overflow-x: auto;
+    width: 100%;
+    /* This spaces the cell away from the edge of the notebook area */
+    padding: 5px 5px 15px 5px;
+    margin: 0px;
+    background-color: white;
+}
+
+div#pager_splitter {
+    height: 8px;
+}
+
+div#pager {
+    padding: 15px;
+    overflow: auto;
+    display: none;
+}
+
+div.ui-widget-content {
+    border: 1px solid #aaa;
+    outline: none;
+}
+
+.cell {
+    border: 1px solid transparent;
+}
+
+div.cell {
+    width: 100%;
+    padding: 5px 5px 5px 0px;
+    /* This acts as a spacer between cells, that is outside the border */
+    margin: 2px 0px 2px 0px;
+}
+
+div.code_cell {
+    background-color: white;
+}
+
+/* any special styling for code cells that are currently running goes here */
+div.code_cell.running {
+}
+
+div.prompt {
+    /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
+    width: 11ex;
+    /* This 0.4em is tuned to match the padding on the CodeMirror editor. */
+    padding: 0.4em;
+    margin: 0px;
+    font-family: monospace;
+    text-align:right;
+}
+
+div.input {
+    page-break-inside: avoid;
+}
+
+/* input_area and input_prompt must match in top border and margin for alignment */
+div.input_area {
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #f7f7f7;
+}
+
+div.input_prompt {
+    color: navy;
+    border-top: 1px solid transparent;
+}
+
+div.output_wrapper {
+    /* This is a spacer between the input and output of each cell */
+    margin-top: 5px;
+    margin-left: 5px;
+    /* FF needs explicit width to stretch */
+    width: 100%;
+    /* this position must be relative to enable descendents to be absolute within it */
+    position: relative;
+}
+
+/* class for the output area when it should be height-limited */
+div.output_scroll {
+  /* ideally, this would be max-height, but FF barfs all over that */
+  height: 24em;
+  /* FF needs this *and the wrapper* to specify full width, or it will shrinkwrap */
+  width: 100%;
+  
+  overflow: auto;
+  border-radius: 3px;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, .8);
+}
+
+/* output div while it is collapsed */
+div.output_collapsed {
+  margin-right: 5px;
+}
+
+div.out_prompt_overlay {
+  height: 100%;
+  padding: 0px;
+  position: absolute;
+  border-radius: 3px;
+}
+
+div.out_prompt_overlay:hover {
+  /* use inner shadow to get border that is computed the same on WebKit/FF */
+  box-shadow: inset 0 0 1px #000;
+  background: rgba(240, 240, 240, 0.5);
+}
+
+div.output_prompt {
+    color: darkred;
+    /* 5px right shift to account for margin in parent container */
+    margin: 0 5px 0 -5px;
+}
+
+/* This class is the outer container of all output sections. */
+div.output_area {
+    padding: 0px;
+    page-break-inside: avoid;
+}
+
+/* This class is for the output subarea inside the output_area and after
+   the prompt div. */
+div.output_subarea {
+    padding: 0.4em 0.4em 0.4em 0.4em;
+}
+
+/* The rest of the output_* classes are for special styling of the different
+   output types */
+
+/* all text output has this class: */
+div.output_text {
+    text-align: left;
+    color: black;
+    font-family: monospace;
+}
+
+/* stdout/stderr are 'text' as well as 'stream', but pyout/pyerr are *not* streams */
+div.output_stream {
+    padding-top: 0.0em;
+    padding-bottom: 0.0em;
+}
+div.output_stdout {
+}
+div.output_stderr {
+    background: #fdd; /* very light red background for stderr */
+}
+
+div.output_latex {
+    text-align: left;
+    color: black;
+}
+
+div.output_html {
+}
+
+div.output_png {
+}
+
+div.output_jpeg {
+}
+
+div.text_cell {
+    background-color: white;
+    padding: 5px 5px 5px 5px;
+}
+
+div.text_cell_input {
+    color: black;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background: #f7f7f7;
+}
+
+div.text_cell_render {
+    font-family: "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+    outline: none;
+    resize: none;
+    width:  inherit;
+    border-style: none;
+    padding: 5px;
+    color: black;
+}
+
+/* The following gets added to the <head> if it is detected that the user has a
+ * monospace font with inconsistent normal/bold/italic height.  See
+ * notebookmain.js.  Such fonts will have keywords vertically offset with
+ * respect to the rest of the text.  The user should select a better font. 
+ * See: https://github.com/ipython/ipython/issues/1503
+ *
+ * .CodeMirror span {
+ *      vertical-align: bottom;
+ * }
+ */
+
+.CodeMirror {
+    line-height: 1.231;  /* Changed from 1em to our global default */
+}
+
+.CodeMirror-scroll {
+    height: auto;     /* Changed to auto to autogrow */
+    /*  The CodeMirror docs are a bit fuzzy on if overflow-y should be hidden or visible.*/
+    /*  We have found that if it is visible, vertical scrollbars appear with font size changes.*/
+    overflow-y: hidden;
+    overflow-x: auto; /* Changed from auto to remove scrollbar */
+}
+
+/* CSS font colors for translated ANSI colors. */
+
+
+.ansiblack {color: black;}
+.ansired {color: darkred;}
+.ansigreen {color: darkgreen;}
+.ansiyellow {color: brown;}
+.ansiblue {color: darkblue;}
+.ansipurple {color: darkviolet;}
+.ansicyan {color: steelblue;}
+.ansigrey {color: grey;}
+.ansibold {font-weight: bold;}
+
+.completions {
+    position: absolute;
+    z-index: 10;
+    overflow: hidden;
+    border: 1px solid grey;
+}
+
+.completions select {
+    background: white;
+    outline: none;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    overflow: auto;
+    font-family: monospace;
+}
+
+option.context {
+  background-color: #DEF7FF;
+}
+option.introspection {
+  background-color: #EBF4EB;
+}
+
+/*fixed part of the completion*/
+.completions p b {
+    font-weight:bold;
+}
+
+.completions p {
+    background: #DDF;
+    /*outline: none;
+    padding: 0px;*/
+    border-bottom: black solid 1px;
+    padding: 1px;
+    font-family: monospace;
+}
+
+pre.dialog {
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 0.4em;
+    padding-left: 2em;
+}
+
+p.dialog {
+    padding : 0.2em;
+}
+
+.shortcut_key {
+    display: inline-block;
+    width: 15ex;
+    text-align: right;
+    font-family: monospace;
+}
+
+.shortcut_descr {
+}
+
+/* Word-wrap output correctly.  This is the CSS3 spelling, though Firefox seems
+   to not honor it correctly.  Webkit browsers (Chrome, rekonq, Safari) do.
+ */
+pre, code, kbd, samp { white-space: pre-wrap; }
+
+#fonttest {
+    font-family: monospace;
+}
+
+</style>
+<style type="text/css">
+.rendered_html {color: black;}
+.rendered_html em {font-style: italic;}
+.rendered_html strong {font-weight: bold;}
+.rendered_html u {text-decoration: underline;}
+.rendered_html :link { text-decoration: underline }
+.rendered_html :visited { text-decoration: underline }
+.rendered_html h1 {font-size: 197%; margin: .65em 0; font-weight: bold;}
+.rendered_html h2 {font-size: 153.9%; margin: .75em 0; font-weight: bold;}
+.rendered_html h3 {font-size: 123.1%; margin: .85em 0; font-weight: bold;}
+.rendered_html h4 {font-size: 100% margin: 0.95em 0; font-weight: bold;}
+.rendered_html h5 {font-size: 85%; margin: 1.5em 0; font-weight: bold;}
+.rendered_html h6 {font-size: 77%; margin: 1.65em 0; font-weight: bold;}
+.rendered_html ul {list-style:disc; margin: 1em 2em;}
+.rendered_html ul ul {list-style:square; margin: 0em 2em;}
+.rendered_html ul ul ul {list-style:circle; margin-left: 0em 2em;}
+.rendered_html ol {list-style:upper-roman; margin: 1em 2em;}
+.rendered_html ol ol {list-style:upper-alpha; margin: 0em 2em;}
+.rendered_html ol ol ol {list-style:decimal; margin: 0em 2em;}
+.rendered_html ol ol ol ol {list-style:lower-alpha; margin 0em 2em;}
+.rendered_html ol ol ol ol ol {list-style:lower-roman; 0em 2em;}
+
+.rendered_html hr {
+    color: black;
+    background-color: black;
+}
+
+.rendered_html pre {
+    margin: 1em 2em;
+}
+
+.rendered_html blockquote {
+    margin: 1em 2em;
+}
+
+.rendered_html table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    margin: 1em 2em;
+}
+
+.rendered_html td {
+    border: 1px solid black;
+    text-align: left;
+    vertical-align: middle;
+    padding: 4px;
+}
+
+.rendered_html th {
+    border: 1px solid black;
+    text-align: left;
+    vertical-align: middle;
+    padding: 4px;
+    font-weight: bold;
+}
+
+.rendered_html tr {
+    border: 1px solid black;
+}    
+
+.rendered_html p + p {
+    margin-top: 1em;
+}
+
+
+</style>
+<style type="text/css">
+/* Overrides of notebook CSS for static HTML export
+
+*/
+body {
+  overflow: visible;
+  padding: 8px;
+}
+.input_area {
+  padding: 0.4em;
+}
+
+</style>
+<meta charset="UTF-8">
+<style type="text/css">
+.highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+</style>
+<script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript">
+
+</script>
+<script type="text/javascript">
+init_mathjax = function() {
+    if (window.MathJax) {
+        // MathJax loaded
+        MathJax.Hub.Config({
+            tex2jax: {
+                inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                displayMath: [ ['$$','$$'], ["\\[","\\]"] ]
+            },
+            displayAlign: 'left', // Change this to 'center' to center equations.
+            "HTML-CSS": {
+                styles: {'.MathJax_Display': {"margin": 0}}
+            }
+        });
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    }
+}
+init_mathjax();
+</script>
+</head>
+<body>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1>Auto-Encoders and Denoising Auto-Encoders</h1>
+<p>The auto-encoder (AE) is a classic unsupervised algorithm for non-linear dimensionality reduction.
+The de-noising auto-encoder (DAE) is an extension of the auto-encoder introduced as a building block for deep networks in [Vincent08].
+This tutorial introduces the autoencoder as an unsupervised feature learning algorithm for the MNIST data set, and then develops the denoising autoencoder.
+See section 4.6 of [Bengio09]_ for an overview of auto-encoders.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># Before we get started with the rest of the tutorial, </span>
+<span class="c"># run this once (and again after every kernel restart)</span>
+<span class="c"># to bring in all the external symbols we&#39;ll need.</span>
+
+<span class="kn">from</span> <span class="nn">functools</span> <span class="kn">import</span> <span class="n">partial</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">time</span>
+
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">dot</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span> <span class="n">log</span><span class="p">,</span> <span class="n">newaxis</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">,</span> <span class="n">tanh</span> 
+<span class="n">rng</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">RandomState</span><span class="p">(</span><span class="mi">123</span><span class="p">)</span>
+
+<span class="kn">from</span> <span class="nn">skdata</span> <span class="kn">import</span> <span class="n">mnist</span><span class="p">,</span> <span class="n">cifar10</span><span class="p">,</span> <span class="n">svhn</span>
+<span class="kn">import</span> <span class="nn">autodiff</span>
+
+<span class="kn">from</span> <span class="nn">util</span> <span class="kn">import</span> <span class="n">show_filters</span>
+<span class="k">print</span> <span class="s">&#39;-&gt; Imports Complete&#39;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's also import the MNIST data set here, so that the examples in the tutorial have some data to work with. (HINT: Some of the exercises will involve using different data sets -- you can use different data sets with the tutorial code by writing a code block like this one that redefining <code>x</code> and <code>x_img_res</code>.)</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">dtype</span> <span class="o">=</span> <span class="s">&#39;float32&#39;</span>   <span class="c"># -- this sets the working precision for data and model</span>
+<span class="n">n_examples</span> <span class="o">=</span> <span class="mi">10000</span>  <span class="c"># -- use up to 50000 examples</span>
+
+<span class="n">data_view</span> <span class="o">=</span> <span class="n">mnist</span><span class="o">.</span><span class="n">views</span><span class="o">.</span><span class="n">OfficialImageClassification</span><span class="p">(</span><span class="n">x_dtype</span><span class="o">=</span><span class="n">dtype</span><span class="p">)</span>
+<span class="n">x_as_images</span> <span class="o">=</span> <span class="n">data_view</span><span class="o">.</span><span class="n">train</span><span class="o">.</span><span class="n">x</span><span class="p">[:</span><span class="n">n_examples</span><span class="p">]</span>
+<span class="n">x_img_res</span> <span class="o">=</span> <span class="n">x_as_images</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>         <span class="c"># -- handy for showing filters</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x_as_images</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n_examples</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">))</span>  <span class="c"># -- rasterize images to vectors</span>
+<span class="n">n_visible</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c"># -- uncomment this line to see the initial weight values</span>
+<span class="n">show_filters</span><span class="p">(</span><span class="n">x</span><span class="p">[:</span><span class="mi">100</span><span class="p">],</span> <span class="n">x_img_res</span><span class="p">,</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2>Autoencoders</h2>
+<p>Generally speaking, an autoencoder maps vector input $\mathbf{x}$ to some intermediate representation $\mathbf{y}$ and then back into the original space, in such a way that the end-point is close to $\mathbf{x}$. While the goal thus defined is simply to learn an identity function,
+things get interesting when the mappings are parameterized or constrained in such a way that a general identity function is either impossible to represent or at least difficult to learn from data. When this is the case, the goal of learning is to learn a <em>special-purpose</em> identity function that <em>typically</em> works for vectors $\mathbf{x}$ that we care about, which come from some empirically interesting distribution.  The $\mathbf{y}$ vector that comes out of this process contains all the <em>important</em> information about $x$ in a new and potentially useful way.</p>
+<p>In our tutorial here we will deal with vectors $\mathbf{x}$ that come from the MNIST data set of hand-written digits.
+Examples from MNIST are vectors $\mathbf{x} \in [0,1]^N$,
+and we will look at the classic one-layer sigmoidal autoencoder parameterized by:</p>
+<ul>
+<li>matrix $W \in \mathbb{R}^{N \times M}$ - the <em>weights</em></li>
+<li>vector $\mathbf{b} \in \mathbb{R}^M$ - the <em>bias</em></li>
+<li>matrix $V \in \mathbb{R}^{M \times N}$ - the <em>reconstruction weights</em></li>
+<li>vector $\mathbf{c} \in \mathbb{R}^N$ - the <em>recontruction bias</em></li>
+</ul>
+<p>which encodes vectors $\mathbf{x}$ into $\mathbf{y} \in [0,1]^M$ by the deterministic mapping</p>
+<p>$$ \mathbf{h} = s(\mathbf{x}\mathbf{W} + \mathbf{b}) $$</p>
+<p>Where $s$ is a poinwise sigmoidal function $s(u) = 1 / (1 + e^{-u})$.
+The latent representation $\mathbf{h}$,
+or <em>code</em> is then mapped back (<em>decoded</em>) into
+<em>reconstruction</em> $\mathbf{z}$ through the similar transformation</p>
+<p>$$\mathbf{z} = s(\mathbf{h}\mathbf{V} + \mathbf{c}) $$.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># Run this cell to define the symbols</span>
+<span class="k">def</span> <span class="nf">logistic</span><span class="p">(</span><span class="n">u</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return logistic sigmoid of float or ndarray `u`&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="mf">1.0</span> <span class="o">/</span> <span class="p">(</span><span class="mf">1.0</span> <span class="o">+</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">u</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">autoencoder</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">logistic</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+    <span class="c"># -- using w.T here is called using &quot;tied weights&quot;</span>
+    <span class="c"># -- using a second weight matrix here is called &quot;untied weights&quot;</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="n">logistic</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">V</span><span class="p">)</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">z</span><span class="p">,</span> <span class="n">h</span>
+
+<span class="k">print</span> <span class="s">&#39;-&gt; defined model family&#39;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3>Training an Autoencoder</h3>
+<p>Training an autoencoder consists of minimizing a reconstruction cost,
+taking $\mathbf{z}$ as the reconstruction of $\mathbf{x}$.
+Intuitively, we want a model that reconstructs the important aspects of $\mathbf{x}$
+so that we guarantee that these aspects are preserved by $\mathbf{y}$.
+Typically, mathematical formalizations of this intuition are not particularly
+exotic, but they should, at the very least, respect the domain and range of $\mathbf{x}$
+and $\mathbf{z}$ respectively.
+So for example, if $\mathbf{x}$ were a real-valued element of $\mathbb{R}^N$ then
+we might formalize the reconstruction cost as 
+$|| \mathbf{x} - \mathbf{z} ||^2$, but there is no mathematical requirement
+to use the $\ell_2$ norm or indeed to use a valid norm at all.</p>
+<p>For our MNIST data, we will suppose that $\mathbf{x}$ is a vector Bernoulli probabilities,
+and define the reconstruction cost to be the <em>cross-entropy</em> betwen $\mathbf{z}$ and $\mathbf{x}$:</p>
+<p>$$
+L(\mathbf{x}, \mathbf{z}) = - \sum^d_{k=1}[\mathbf{x}_k \log
+          \mathbf{z}_k + (1 - \mathbf{x}_k)\log(1 - \mathbf{z}_k)]
+$$</p>
+<p>We write this in Python as:</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">cross_entropy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">):</span>
+    <span class="c"># -- N.B. this is numerically bad, we&#39;re counting on Theano to fix up</span>
+    <span class="k">return</span> <span class="o">-</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">log</span><span class="p">(</span><span class="n">z</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">z</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">training_criterion</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">z</span><span class="p">,</span> <span class="n">h</span> <span class="o">=</span> <span class="n">autoencoder</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">cross_entropy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">L</span>
+
+<span class="k">print</span> <span class="s">&#39;-&gt; defined training_criterion&#39;</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Training an autoencoder is an optimization problem that is
+typically treated in two steps:</p>
+<ol>
+<li><strong>Initialization</strong> - choosing a starting point for gradient-based search,</li>
+<li><strong>Local Search</strong> - running a gradient-based optimization algorithm</li>
+</ol>
+<p><strong>Initialization</strong>
+The parameters of this particular model
+($W, \mathbf{b}, V, \mathbf{c}$) must be initialized
+so that symmetry is broken between the columns of $W$ (also the rows of $V$),
+otherwise the gradient on each column will be identical and local search will
+be completely ineffective.</p>
+<p>It is customary to initialize $W$ to small random values to break symmetry,
+and to initialize the rest of the parameters to 0.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># -- allocate and initialize a new model  (w, visbias, hidbias)</span>
+
+<span class="c"># -- tip: choose the number of hidden units as a pair, so that show_filters works</span>
+<span class="n">n_hidden2</span> <span class="o">=</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">n_hidden</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">prod</span><span class="p">(</span><span class="n">n_hidden2</span><span class="p">)</span>
+<span class="n">W</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span>
+        <span class="n">low</span><span class="o">=-</span><span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">6.</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_hidden</span> <span class="o">+</span> <span class="n">n_visible</span><span class="p">)),</span>
+        <span class="n">high</span><span class="o">=</span><span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mf">6.</span> <span class="o">/</span> <span class="p">(</span><span class="n">n_hidden</span> <span class="o">+</span> <span class="n">n_visible</span><span class="p">)),</span>
+        <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">n_visible</span><span class="p">,</span> <span class="n">n_hidden</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_hidden</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_visible</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+
+<span class="c"># -- uncomment this line to see the initial weight values</span>
+<span class="n">show_filters</span><span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">x_img_res</span><span class="p">,</span> <span class="n">n_hidden2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Local Search</strong></p>
+<p>The training criterion $L$ defined above is a deterministic and differentiable function of parameters ($W, b, V, c$) so any multi-dimensional minimization algorithm can do the job.
+The speed and accuracy of a the method generally depends on the size nature of the data set, the parameters and parameterization of the model, and of course the sophistication of the minimization algorithm.</p>
+<p>A classic, and still widely useful, algorithm is stochastic gradient descent.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">t0</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+<span class="n">online_batch_size</span> <span class="o">=</span> <span class="mi">1</span> <span class="c"># -- =1 for &quot;pure online&quot;, &gt;1 for &quot;minibatch&quot;</span>
+<span class="n">streams</span><span class="o">=</span><span class="p">{</span><span class="s">&#39;x&#39;</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span>
+                         <span class="n">n_examples</span> <span class="o">/</span> <span class="n">online_batch_size</span><span class="p">,</span>
+                         <span class="n">online_batch_size</span><span class="p">,</span>
+                         <span class="n">n_visible</span><span class="p">))}</span>
+<span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">autodiff</span><span class="o">.</span><span class="n">fmin_sgd</span><span class="p">(</span><span class="n">training_criterion</span><span class="p">,</span>
+        <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">c</span><span class="p">),</span>
+        <span class="n">streams</span><span class="o">=</span><span class="n">streams</span><span class="p">,</span>
+        <span class="n">stepsize</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+        <span class="n">loops</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="c"># -- fmin_sgd can iterate over the streams repeatedly</span>
+        <span class="n">print_interval</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<span class="n">show_filters</span><span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">x_img_res</span><span class="p">,</span> <span class="n">n_hidden2</span><span class="p">)</span>
+<span class="k">print</span> <span class="s">&#39;Online training took </span><span class="si">%f</span><span class="s"> seconds&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">t0</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Another powerful minimization method is the well-known (L-BFGS) algorithm. When used as a training algorithm, it is called a <em>batch</em> algorithm because it does not deal well with stochastic functions, and therefore requires that we evaluate the total loss over all training examples on each cost function evaluation.</p>
+<p>L-BFGS can be run right away from the random initialization,
+but often what works better is to do a few loops of <code>fmin_sgd</code> to move the initial random parameters to a promising area of the search space, and then to refine that solution with L-BFGS.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># -- BATCH TRAINING</span>
+<span class="k">def</span> <span class="nf">batch_criterion</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">training_criterion</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">autodiff</span><span class="o">.</span><span class="n">fmin_l_bfgs_b</span><span class="p">(</span><span class="n">batch_criterion</span><span class="p">,</span>
+        <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">c</span><span class="p">),</span>
+        <span class="n">maxfun</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span>    <span class="c"># -- how many function calls to allow?</span>
+        <span class="n">iprint</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>     <span class="c"># -- 1 for verbose, 0 for normal, -1 for quiet</span>
+        <span class="n">m</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>         <span class="c"># -- how well to approximate the Hessian</span>
+
+<span class="n">show_filters</span><span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">x_img_res</span><span class="p">,</span> <span class="n">n_hidden2</span><span class="p">)</span> 
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>That's it, we've trained an auto-encoder.</p>
+<h3>Autoencoder Summary</h3>
+<p>An autoencoder is a function that maps a vector to approximately itself, by passing it through intermediate values in such a way that the pure identify function is difficult or impossible.
+An autoencoder is a non-stochastic pre-cursur to several more modern probabilistic models such as De-Noising AutoEncoders, Sparse Coding, and Restricted Boltzmann Machines. They are a flexible class of feature extraction algorithms that can be quick to train by either stochastic gradient descent, or more sophisticated minimization algorithms such as L-BFGS.</p>
+<p>Spend some time running through the exercises below to get a better feel for how autoencoders work and what they can do.</p>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3>Exercise: Linear AutoEncoder</h3>
+<p>If there is one linear hidden layer (the code) and
+the mean squared error criterion is used to train the network, then the $k$
+hidden units learn to project the input in the span of the first $k$
+principal components of the data. If the hidden
+layer is non-linear, the auto-encoder behaves differently from PCA,
+with the ability to capture multi-modal aspects of the input
+distribution. The departure from PCA becomes even more important when
+we consider <em>stacking multiple encoders</em> (and their corresponding decoders)
+when building a deep auto-encoder [Hinton06]_.</p>
+<p>Re-inialize the weights, and try SGD on the following linear auto-encoder model.</p>
+<p>HINT: if you get NaN as the Value during SGD, try lowering the step size to 0, and then slowly raising it.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">squared_error</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_rec</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the squared error of approximating `x` with `x_rec`&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">x_rec</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">linear_autoencoder_criterion</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">hid</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">c</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span>
+    <span class="n">x_rec</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">hid</span><span class="p">,</span> <span class="n">W</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">cost</span> <span class="o">=</span> <span class="n">squared_error</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">c</span><span class="p">,</span> <span class="n">x_rec</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cost</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="k">print</span> <span class="n">linear_autoencoder_criterion</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+
+<span class="c"># Modify the SGD training code (or paste it here) to train just W and c</span>
+<span class="c"># using the linear_autoencoder_criterion</span>
+<span class="c"># ...</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3>Exercise: Regularization via Tied Weights</h3>
+<p>The weight matrix $V$ of the reverse mapping may be
+optionally constrained by $V = W^{T}$, which is
+called an autoencoder with <em>tied weights</em>.
+This is another way to regularize the autoencoder model.
+The PCA interpretation of the autoencoder (linear autoencoder), the RBM model (algorithmically similar to the autoencoder), the K-Means, and sparse coding interpretations of the auto-encoder all demand tied weights. How do the filters come out if you use the <code>training_criterion_tied</code>?</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">training_criterion_tied</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">training_criterion</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">W</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+
+<span class="c"># Now modify (or paste here) an optimization fragment that optimizes only (W, b, c)</span>
+<span class="c"># ...</span>
+<span class="c"># How is W changed by being tied to V ?</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3>Exercise: Capacity Regularization via L2 Regularization</h3>
+<p>One serious potential issue with auto-encoders is that if there is no other
+constraint besides minimizing the reconstruction error,
+then an auto-encoder with $n$ inputs and an
+encoding of dimension at least $n$ could potentially just learn
+the identity function, and fail to differentiate
+test examples (from the training distribution) from other input configurations.
+Surprisingly, experiments reported in [Bengio07]_ nonetheless
+suggest that in practice, when trained with
+stochastic gradient descent, non-linear auto-encoders with more hidden units
+than inputs (called overcomplete) yield useful representations
+(in the sense of classification error measured on a network taking this
+representation in input). A simple explanation is based on the
+observation that stochastic gradient
+descent with early stopping is similar to an L2 regularization of the
+parameters. To achieve perfect reconstruction of continuous
+inputs, a one-hidden layer auto-encoder with non-linear hidden units
+(exactly like in the above code)
+needs very small weights in the first (encoding) layer (to bring the non-linearity of
+the hidden units in their linear regime) and very large weights in the
+second (decoding) layer.
+With binary inputs, very large weights are
+also needed to completely minimize the reconstruction error. Since the
+implicit or explicit regularization makes it difficult to reach
+large-weight solutions, the optimization algorithm finds encodings which
+only work well for examples similar to those in the training set, which is
+what we want. It means that the representation is exploiting statistical
+regularities present in the training set, rather than learning to
+replicate the identity function.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="c"># The claim above is that SGD already implements an L2 regularization implicitly,</span>
+<span class="c"># whereas L-BFGS less so or not at all.</span>
+<span class="c"># Can you detect a difference? (I&#39;m not sure if you can or not)</span>
+<span class="c"># </span>
+<span class="c"># One way to explore the question is to let SGD and L-BFGS both run until the reconstruction</span>
+<span class="c"># error is nearly zero. Can both algorithms get that far? Which one finds larger parameters?</span>
+<span class="c">#</span>
+<span class="c"># Now define a new training_criterion function that includes L2 penalty</span>
+<span class="c"># (W ** 2).sum()</span>
+<span class="c">#</span>
+<span class="c"># How does an explicit L2 penalty affect SGD? What about L-BFGS?</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3>Exercise: Sparsity, K-means</h3>
+<p>There are different ways that an auto-encoder with more hidden units
+than inputs could be prevented from learning the identity, and still
+capture something useful about the input in its hidden representation.
+One is the addition of sparsity (forcing many of the hidden units to
+be zero or near-zero), and it has been exploited very successfully
+by many [Ranzato07]<em> [Lee08]</em>.</p>
+<p>One of the most extreme forms of sparsity in autoencoders is known as the K-means algorithm.
+In the K-means model, the latent code <code>hid</code> is a vector with one <code>1</code> and the rest all <code>0</code>.
+K-means is typically solved using a very efficient batch EM algorithm, but we can also
+tackle it with the same tools we've been using thus far.</p>
+<p>How does this compare with <a href="http://scikit-learn.org/stable/modules/generated/sklearn.cluster.KMeans.html">sklearn's K-means solver</a>?</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">softmax</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return the softmax of each row in x&quot;&quot;&quot;</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="n">newaxis</span><span class="p">]</span>
+    <span class="n">ex</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">x2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ex</span> <span class="o">/</span> <span class="n">ex</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="n">newaxis</span><span class="p">]</span>
+
+<span class="c"># helper functions -- run this once after a kernel restart</span>
+<span class="c"># Re-run it after any change you make to these routines.</span>
+
+<span class="k">def</span> <span class="nf">euclidean_distances2</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Return all-pairs squared distances between rows of X and Y</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c"># N.B. sklearn.metrics.pairwise.euclidean_distances</span>
+    <span class="c"># offers a more robust version of this routine,</span>
+    <span class="c"># but which does things that autodiff currently does not support.</span>
+    <span class="n">XX</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">X</span> <span class="o">*</span> <span class="n">X</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="n">newaxis</span><span class="p">]</span>
+    <span class="n">YY</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Y</span> <span class="o">*</span> <span class="n">Y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[</span><span class="n">newaxis</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">distances</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">XX</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">dot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">YY</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">distances</span>
+    
+<span class="k">def</span> <span class="nf">k_means_real_x</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">xw</span> <span class="o">=</span> <span class="n">euclidean_distances2</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+    <span class="c"># -- This calculates a hard winner</span>
+    <span class="n">hid</span> <span class="o">=</span> <span class="p">(</span><span class="n">xw</span> <span class="o">==</span> <span class="n">xw</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)[:,</span> <span class="n">newaxis</span><span class="p">])</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">dtype</span><span class="p">)</span>
+    <span class="c"># -- This calculates a soft winner</span>
+    <span class="n">hid</span> <span class="o">=</span> <span class="n">hid</span> <span class="o">+</span> <span class="n">softmax</span><span class="p">(</span><span class="n">xw</span><span class="p">)</span>
+    <span class="n">x_rec</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">hid</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">w</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">cost</span> <span class="o">=</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">x_rec</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">rval</span> <span class="o">=</span> <span class="n">cost</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">rval</span>
+
+<span class="k">if</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">W</span><span class="p">,</span> <span class="o">=</span> <span class="n">autodiff</span><span class="o">.</span><span class="n">fmin_sgd</span><span class="p">(</span><span class="n">k_means_real_x</span><span class="p">,</span>
+        <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">W</span><span class="p">,),</span>
+        <span class="n">streams</span><span class="o">=</span><span class="n">streams</span><span class="p">,</span>
+        <span class="n">stepsize</span><span class="o">=</span><span class="mf">0.001</span><span class="p">,</span>
+        <span class="n">loops</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>  <span class="c"># -- fmin_sgd can iterate over the streams repeatedly</span>
+        <span class="n">print_interval</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<span class="k">if</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">W</span><span class="p">,</span> <span class="o">=</span> <span class="n">autodiff</span><span class="o">.</span><span class="n">fmin_l_bfgs_b</span><span class="p">(</span><span class="k">lambda</span> <span class="n">W</span><span class="p">:</span> <span class="n">k_means_real_x</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">x</span><span class="p">),</span>
+        <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">W</span><span class="p">,),</span>
+        <span class="n">maxfun</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>    <span class="c"># -- how many function calls to allow?</span>
+        <span class="n">iprint</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>     <span class="c"># -- 1 for verbose, 0 for normal, -1 for quiet</span>
+        <span class="n">m</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>         <span class="c"># -- how well to approximate the Hessian</span>
+
+
+<span class="n">show_filters</span><span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">x_img_res</span><span class="p">,</span> <span class="n">n_hidden2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3>Exercise: Sparsity via sparse coding</h3>
+<p>Sorry guys, this isn't implemented yet.
+So the exercise is: implement FISTA, or the (Olshausen and Field, 1996) version.</p>
+<ul>
+<li>HINT: <a href="">sklearn's LASSO</a> might help with half of the FISTA algorithm</li>
+<li>HINT: Also consider using Leif Johnson's <a href="https://github.com/lmjohns3/py-lars">py-lars code</a></li>
+</ul>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="n">FISTA</span> <span class="o">=</span> <span class="ne">NotImplementedError</span>
+<span class="c"># real-real Sparse Coding</span>
+<span class="k">def</span> <span class="nf">sparse_coding_real_x</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">hidbias</span><span class="p">,</span> <span class="n">visbias</span><span class="p">,</span> <span class="n">sparse_coding_algo</span><span class="o">=</span><span class="n">FISTA</span><span class="p">):</span>
+    <span class="c"># -- several sparse coding algorithms have been proposed, but they all</span>
+    <span class="c"># give rise to a feature learning algorithm that looks like this:</span>
+    <span class="n">hid</span> <span class="o">=</span> <span class="n">sparse_coding_algo</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+    <span class="n">x_rec</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">hid</span><span class="p">,</span> <span class="n">w</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">visbias</span>
+    <span class="n">cost</span> <span class="o">=</span> <span class="p">((</span><span class="n">x</span> <span class="o">-</span> <span class="n">x_rec</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c"># -- the gradient on this cost wrt `w` through the sparse_coding_algo is</span>
+    <span class="c"># often ignored. At least one notable exception is the work of Karol</span>
+    <span class="c"># Greggor.  I feel like the Implicit Differentiation work of Drew Bagnell</span>
+    <span class="c"># is another, but I&#39;m not sure.</span>
+    <span class="k">return</span> <span class="n">cost</span><span class="p">,</span> <span class="n">hid</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3>Exercise: Denoising AutoEncoder</h3>
+<p>Another variation on the autoencoder theme is to add noise to the input by zeroing out some of the elements randomly. This is known as the denoising autoencoder (Vincent et al., XXX)
+and it has been shown to be a form of score-matching (probabilistic model interpretation)
+and a good feature extraction algorithm.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">denoising_autoencoder_binary_x</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="c"># -- corrupt the input by zero-ing out some values randomly</span>
+    <span class="n">noisy_x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span> <span class="o">&gt;</span> <span class="o">.</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">hid</span> <span class="o">=</span> <span class="n">logistic</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">noisy_x</span><span class="p">,</span> <span class="n">W</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span>
+    <span class="n">x_rec</span> <span class="o">=</span> <span class="n">logistic</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">hid</span><span class="p">,</span> <span class="n">W</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span>
+    <span class="n">cost</span> <span class="o">=</span> <span class="n">cross_entropy</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x_rec</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cost</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">autodiff</span><span class="o">.</span><span class="n">fmin_sgd</span><span class="p">(</span><span class="n">denoising_autoencoder_binary_x</span><span class="p">,</span>
+        <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">),</span>
+        <span class="n">streams</span><span class="o">=</span><span class="n">streams</span><span class="p">,</span>
+        <span class="n">stepsize</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+        <span class="n">loops</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>  <span class="c"># -- fmin_sgd can iterate over the streams repeatedly</span>
+        <span class="n">print_interval</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<span class="n">show_filters</span><span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">x_img_res</span><span class="p">,</span> <span class="n">n_hidden2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3>Exercise: Not really an autoencoder -- the Restricted Boltzmann Machine</h3>
+<p>The Contrastive Divergence algorithm for training Restricted Boltzmann Machines (RBMs) looks a lot like an auto-encoder from an algorithmic perspective, especially the denoising autoencoder. Tempting though it is to use the autoencoder as a unifying framework, it is a stretch to call an RBM an auto-encoder. Mathematically, it is better to train an RBM by Persistent CD (aka Stochastic Maximum Likelihood) and these methods actually work on the basis of ensuring that the RBM does <em>not</em> perfectly reconstruct any training instances. Nevertheless,
+the following code implements the CD algorithm in a way that makes a clear connection to the other autoencoder-style models above.</p>
+<p>One important difference with the cases above is that
+<em>CD is not in fact gradient descent on a cost function</em> and although this code makes use of a difference in free energies as a cost function, it is just a trick.
+Consequently, you'll see that the so-called "cost" values regularly jump both up and down even when the algorithm is working perfectly well. Computation of the likelihood of an RBM involves an infamously intractable partition function -- there are techniques for estimating it (see Ruslan Salakhutdinov's PhD thesis), but no tutorial here yet.</p>
+</div>
+<div class="cell border-box-sizing code_cell vbox">
+<div class="input hbox">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="input_area box-flex1">
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">rbm_binary_x</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">hidbias</span><span class="p">,</span> <span class="n">visbias</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">hid</span> <span class="o">=</span> <span class="n">logistic</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">+</span> <span class="n">hidbias</span><span class="p">)</span>
+    <span class="n">hid_sample</span> <span class="o">=</span> <span class="p">(</span><span class="n">hid</span> <span class="o">&gt;</span> <span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="n">hid</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+    <span class="c"># -- N.B. model is not actually trained to reconstruct x</span>
+    <span class="n">x_rec</span> <span class="o">=</span> <span class="n">logistic</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">hid_sample</span><span class="p">,</span> <span class="n">w</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">visbias</span><span class="p">)</span>
+    <span class="n">x_rec_sample</span> <span class="o">=</span> <span class="p">(</span><span class="n">x_rec</span> <span class="o">&gt;</span> <span class="n">rand</span><span class="p">(</span><span class="o">*</span><span class="n">x_rec</span><span class="o">.</span><span class="n">shape</span><span class="p">))</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+
+    <span class="c"># &quot;negative phase&quot; hidden unit expectation</span>
+    <span class="n">hid_rec</span> <span class="o">=</span> <span class="n">logistic</span><span class="p">(</span><span class="n">dot</span><span class="p">(</span><span class="n">x_rec_sample</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">+</span> <span class="n">hidbias</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">free_energy</span><span class="p">(</span><span class="n">xx</span><span class="p">):</span>
+        <span class="n">xw_b</span> <span class="o">=</span> <span class="n">dot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span> <span class="o">+</span> <span class="n">hidbias</span>
+        <span class="k">return</span> <span class="o">-</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">exp</span><span class="p">(</span><span class="n">xw_b</span><span class="p">))</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">dot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">visbias</span><span class="p">)</span>
+
+    <span class="n">cost</span> <span class="o">=</span> <span class="n">free_energy</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">free_energy</span><span class="p">(</span><span class="n">x_rec_sample</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cost</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+
+<span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">autodiff</span><span class="o">.</span><span class="n">fmin_sgd</span><span class="p">(</span><span class="n">rbm_binary_x</span><span class="p">,</span>
+        <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">W</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">),</span>
+        <span class="n">streams</span><span class="o">=</span><span class="n">streams</span><span class="p">,</span>
+        <span class="n">stepsize</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+        <span class="n">loops</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>  <span class="c"># -- fmin_sgd can iterate over the streams repeatedly</span>
+        <span class="n">print_interval</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+        <span class="p">)</span>
+
+<span class="n">show_filters</span><span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">x_img_res</span><span class="p">,</span> <span class="n">n_hidden2</span><span class="p">)</span>
+</pre></div>
+
+</div>
+</div>
+</div>
+</body>
+</html>
