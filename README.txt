@@ -10,10 +10,8 @@ The pages published for the ipython notebooks works like this:
 
 ## Rebuilding index.html
 
-Rebuild the index.html using the github wizard. Go to the IPythonTheanoTutorials
-project page, and open the project "Settings". On that page, click the
-"Automatic Page Generator" button, edit the text there, and publish using the
-web interface.
+Rebuild the index.html file by editing the index.html directly.
+DO NOT regenerate it using the github wizard, it will erase everything else!!
 
 
 ## Rebuilding all the notebook html files
