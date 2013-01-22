@@ -14,13 +14,7 @@ mkdir -p nbpages/files/images
 set +e
 mv ../ipynb/*.html nbpages/
 mv ../ipynb/*.png nbpages/
-#set -e
-
-for F in nbpages/*.html ; do
-    NEWF=$(echo "$F" | sed -e "s/(/_/g" -e "s/)/_/g")
-    echo "Sanitizing URL: $F -> $NEWF"
-    git mv "$F" "$NEWF"
-done
+set -e
 
 cp ../ipynb/images/* nbpages/files/images/
 
