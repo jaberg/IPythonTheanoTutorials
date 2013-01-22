@@ -3,6 +3,36 @@
 A collection of tutorials in ipynb format that illustrate how to do various
 things in Theano.
 
+### Theano Tutorials
+
+1. [nbpages/Theano Tutorial (Part 1 - Introduction).html](Introduction)
+2. [nbpages/Theano Tutorial (Part 2 - Simple Computation).html](Simple Computation)
+3. [nbpages/Theano Tutorial (Part 3 - Functions and Shared Variables).html](Functions and Shared Variables)
+4. [nbpages/Theano Tutorial (Part 4 - Random Variables).html](Random Variables)
+
+
+### Machine Learning Case Studies
+
+* Model - Logistic Regression with Theano.html
+
+### Other Stuff
+
+* Intro to Scikit Data (skdata).html
+* Preprocessing - Image Whitening.html
+* Notation for Machine Learning.html
+* Model - LIF Neurons with Theano.html
+
+
+### PyAutoDiff
+
+* <Intro to Python.html>
+* Links to Related Work.html
+* Model - Autoencoders and Variations with PyAutodiff.html
+* Model - Convnet with PyAutodiff.html
+* Model - Linear SVM with PyAutodiff.html
+* Model - Multilayer Perceptron with PyAutodiff.html
+
+
 # Installation
 
 ### Requirements:
